@@ -1,14 +1,14 @@
-<?php 
+<?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
 
 	require_once APPPATH . '/libraries/REST_Controller.php';
 
 	/**
-	* clase para producto venta 
+	* clase para producto venta
 	*/
 	class Proventa extends REST_Controller
 	{
-		
+
 		function __construct()
 		{
 			parent::__construct();
@@ -17,17 +17,32 @@
 
 //optener todos los datos de la tabla Categoria
 	public function index_get(){
-//se llama al modelo categoria 
+//se llama al modelo categoria
 		$data = $this->proventa_model->get();
 //se valida si el resultado no es null de la respuesta
 		if(!is_null($data)){
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *'); 
+            header('Access-Control-Allow-Origin: *');
             $this->response( array('proventa'=>$data), 200);
 		}
 		else{
 			$this->response(null, 400);
 		}
+	}
+
+	//obtener imagenes del producto
+	public function imagen_get($id){
+		//se llama al modelo categoria
+				$data = $this->proventa_model->fotografias();
+		//se valida si el resultado no es null de la respuesta
+				if(!is_null($data)){
+					header('Content-Type: application/json; charset=UTF-8');
+		            header('Access-Control-Allow-Origin: *');
+		            $this->response( array('fotografias'=>$data), 200);
+				}
+				else{
+					$this->response(null, 400);
+				}
 	}
 
 //funcion para buscar por id en la tabla categoria
@@ -41,7 +56,7 @@
 //si el return de la funcion es true se imprime el resultado
 			if($data){
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *'); 
+            header('Access-Control-Allow-Origin: *');
             $this->response( array('proventa'=>$data), 200);
 			}
 			else{
@@ -53,7 +68,7 @@
 	public function index_post(){
 		if(!$this->post('data')){
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *'); 
+            header('Access-Control-Allow-Origin: *');
 			$this->response(null, 400);
 		}
 
@@ -67,7 +82,7 @@
 		}
 	}
 
-	    //funcion para actualizar 
+	    //funcion para actualizar
     public function index_put($id){
         if(!$this->post('data') || !$id){
             $this->response(null, 400);
@@ -83,7 +98,7 @@
         }
     }
 
-    //para borrar un pastel 
+    //para borrar un pastel
     public function index_delete($id){
         if(!$id){
             $this->response(null, 400);

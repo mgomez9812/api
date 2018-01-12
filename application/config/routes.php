@@ -54,11 +54,11 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = TRUE;
 
 
-$route['viewpasteles']['get'] = 'viewpasteles/index';//devuelve todos los valores de la tablas 
-$route['viewpasteles/(:num)']['get'] = 'viewpasteles/find/$1';//devuelve los valores de la tabla pasteles dependiendo del ID 
-$route['viewpasteles']['post'] = 'viewpasteles/index';//metodo para insertar 
-$route['viewpasteles/(:num)']['put'] = 'viewpasteles/index/$1';//metodo para realizar update 
-$route['viewpasteles/(:num)']['delete'] = 'viewpasteles/index/$1';//metodo para borrar 
+$route['viewpasteles']['get'] = 'viewpasteles/index';//devuelve todos los valores de la tablas
+$route['viewpasteles/(:num)']['get'] = 'viewpasteles/find/$1';//devuelve los valores de la tabla pasteles dependiendo del ID
+$route['viewpasteles']['post'] = 'viewpasteles/index';//metodo para insertar
+$route['viewpasteles/(:num)']['put'] = 'viewpasteles/index/$1';//metodo para realizar update
+$route['viewpasteles/(:num)']['delete'] = 'viewpasteles/index/$1';//metodo para borrar
 
 //rutas para categorias
 $route['categoria']['get'] = 'categoria/index';
@@ -68,7 +68,7 @@ $route['categoria/(:num)']['put'] = 'categoria/index/$1';
 $route['categoria/(:num)']['delete']='categoria/index/$1';
 
 /*
-rutas para los clientes 
+rutas para los clientes
  */
 $route['cliente']['get'] = 'cliente/index';
 $route['cliente/(:num)']['get'] = 'cliente/find/$1';
@@ -99,7 +99,7 @@ $route['empresa/(:num)']['delete'] = 'empresa/index/$1';
 
 /*
 *rutas para fotografias
-* 
+*
 */
 $route['fotografia']['get'] = 'fotografia/index';
 $route['fotografia/(:num)']['get'] = 'fotografia/find/$1';
@@ -109,7 +109,7 @@ $route['fotografia`/(:num)']['delete'] = 'fotografia/index/$1';
 
 /*
 *Notifiacion
-* 
+*
 */
 $route['notificacion']['get'] = 'notificacion/index';
 $route['notificacion/(:num)']['get'] = 'notificacion/find/$1';
@@ -137,7 +137,7 @@ $route['oferta/(:num)']['put'] = 'oferta/index/$1';
 $route['oferta/(:num)']['delete'] = 'oferta/index/$1';
 
 /*
- *Pedido 
+ *Pedido
  */
 $route['pedido']['get'] = 'pedido/index';
 $route['pedido/(:num)']['get'] = 'pedido/find/$1';
@@ -155,6 +155,11 @@ $route['proventa']['post'] = 'proventa/index';
 $route['proventa/(:num)']['put'] = 'proventa/index/$1';
 $route['proventa/(:num)']['delete'] = 'proventa/index/$1';
 
+
+/*
+  ruta de imagenes de productos
+*/
+$route['proventa/imagen/(:num)']['get'] ='proventa/imagen/$1'
 /*
 *Rutas para tipo Usuario
 *

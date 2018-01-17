@@ -159,7 +159,9 @@ $route['proventa/(:num)']['delete'] = 'proventa/index/$1';
 /*
   ruta de imagenes de productos
 */
-$route['proventa/imagen/(:num)']['get'] ='proventa/imagen/$1'
+$route['proventa/imagen/(:num)']['get'] ='proventa/imagen/$1';
+
+$route['inner']['get'] = 'inner/index';
 /*
 *Rutas para tipo Usuario
 *

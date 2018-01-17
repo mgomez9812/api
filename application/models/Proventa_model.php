@@ -34,17 +34,17 @@
             return false;
         }
 	public function fotografias($id = null){
-								if(!is_null($id)){
+			if(!is_null($id)){
+    			return false;
+			}
+			$query = $this->db->select('*')->from('fotografias_pasteles')->where('pro_ventaid',$id)->get();
+	       
+           	if($query->num_rows() > 0){
+				return $query->result_array();
+			}
 
-										return false;
-								}
-								$query = $this->db->select('*')->from('fotografia_pasteles')->where('pro_ventaid',$id)->get();
-								if($query->num_rows() > 0){
-										return $query->result_array();
-								}
-
-								return false;
-						}
+			return false;
+		}
 
         public function save($Proventa)
         {

@@ -23,7 +23,9 @@
 		if(!is_null($data)){
 			header('Content-Type: application/json; charset=UTF-8');
             header('Access-Control-Allow-Origin: *'); 
-            $this->response( array('fotografia'=>$data), 200);
+            //$this->response( array('fotografia'=>$data), 200);
+            
+            echo json_encode($data, JSON_PRETTY_PRINT);
 		}
 		else{
 			$this->response(null, 400);

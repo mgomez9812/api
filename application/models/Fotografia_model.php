@@ -18,7 +18,7 @@
 		*/
  		public function get($id = null){
             if(!is_null($id)){
-                $query = $this->db->select('*')->from('fotografia_pasteles')->where('idfoto_pasteles',$id)->get();
+                $query = $this->db->select('*')->from('fotografias_pasteles')->where('idfoto_pasteles',$id)->get();
                 
                 if($query->num_rows()  === 1){
                     return $query->row_array();
@@ -26,7 +26,7 @@
                 return false;
             }
 
-            $query = $this->db->select('*')->from('fotografia_pasteles')->get();
+            $query = $this->db->select('*')->from('fotografias_pasteles')->get();
             if($query->num_rows() > 0){
                 return $query->result_array();
             }
@@ -36,7 +36,7 @@
 
         public function save($fotografia)
         {
-            $this->db->set($this->_setDetallespedido($fotografia))->insert('fotografia_pasteles');
+            $this->db->set($this->_setDetallespedido($fotografia))->insert('fotografias_pasteles');
             if ($this->db->affected_rows() === 1) {
                 return $this->db->insert_id();
             }

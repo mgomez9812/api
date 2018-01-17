@@ -92,13 +92,13 @@
         private function _setProventa($venta)
         {
             return array(
-                'nombre_pro_venta' => $empresa['nombre'],
-                'precio_pro_venta' => $empresa['nit_emp'],
-                'descripcion_pro_venta' => $empresa['direccion'],
-                'decoracion_pastel' => $empresa['ciudad'],
-                'oferta_id' => $empresa['telefono'],
-                'categoria_id' => $empresa['logo'],
-                'ocacion_id' => $empresa['logo'],
+                'nombre_pro_venta' => $venta['nombre'],
+                'precio_pro_venta' => $venta['nit_emp'],
+                'descripcion_pro_venta' => $venta['direccion'],
+                'decoracion_pastel' => $venta['ciudad'],
+                'oferta_id' => $venta['telefono'],
+                'categoria_id' => $venta['categoria'],
+
 
             );
         }

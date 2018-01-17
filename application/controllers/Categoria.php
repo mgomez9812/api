@@ -106,7 +106,7 @@ class Categoria extends REST_Controller{
 						if($proventas){
 						header('Content-Type: application/json; charset=UTF-8');
 			            header('Access-Control-Allow-Origin: *');
-			            $this->response( array('categoria'=>$categoria), 200);
+			            $this->response( array('categoria'=>$proventas), 200);
 						}
 						else{
 							$this->response(null, 404);

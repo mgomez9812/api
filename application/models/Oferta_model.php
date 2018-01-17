@@ -73,6 +73,7 @@
                 'descuento_oferta' => $oferta['descuento'],
                 'cantidad_oferta' => $oferta['cantidad'],
                 'estado_oferta' => $oferta['estado'],
+                'pro_venta_id'=> $oferta['proventaid'],
 
             );
         }

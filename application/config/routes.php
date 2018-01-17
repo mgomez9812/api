@@ -67,7 +67,7 @@ $route['categoria']['post'] = 'categoria/index';
 $route['categoria/(:num)']['put'] = 'categoria/index/$1';
 $route['categoria/(:num)']['delete']='categoria/index/$1';
 //ruta de productos por categoria
-$route['categoria/proventas/(:num)']['get']='categoria/proventas/$1'
+$route['categoria/proventas/(:num)']['get']='categoria/proventas/$1';
 
 /*
 rutas para los clientes

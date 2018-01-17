@@ -113,5 +113,20 @@
             $this->response(array('error'=>'no save'), 400);
         }
     }
+
+		//obtener ofertas del producto
+		public function ofertas_get($id){
+			//se llama al modelo categoria
+					$data = $this->proventa_model->ofertas();
+			//se valida si el resultado no es null de la respuesta
+					if(!is_null($data)){
+						header('Content-Type: application/json; charset=UTF-8');
+			            header('Access-Control-Allow-Origin: *');
+			            $this->response( array('fotografias'=>$data), 200);
+					}
+					else{
+						$this->response(null, 400);
+					}
+		}
 	}
  ?>

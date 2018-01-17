@@ -66,6 +66,8 @@ $route['categoria/(:num)']['get'] = 'categoria/find/$1';
 $route['categoria']['post'] = 'categoria/index';
 $route['categoria/(:num)']['put'] = 'categoria/index/$1';
 $route['categoria/(:num)']['delete']='categoria/index/$1';
+//ruta de productos por categoria
+$route['categoria/proventas/(:num)']['get']='categoria/proventas/$1'
 
 /*
 rutas para los clientes
@@ -154,12 +156,11 @@ $route['proventa/(:num)']['get'] = 'proventa/find/$1';
 $route['proventa']['post'] = 'proventa/index';
 $route['proventa/(:num)']['put'] = 'proventa/index/$1';
 $route['proventa/(:num)']['delete'] = 'proventa/index/$1';
-
-
-/*
-  ruta de imagenes de productos
-*/
+//Ofertas del producto
+$route['proventa/ofertas/(:num)']['get'] = 'proventa/ofertas/$1';
+//  ruta de imagenes de productos
 $route['proventa/imagen/(:num)']['get'] ='proventa/imagen/$1';
+
 
 $route['inner']['get'] = 'inner/index';
 /*

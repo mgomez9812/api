@@ -1,9 +1,9 @@
-<?php 
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 require_once APPPATH . '/libraries/REST_Controller.php';
 
-//para la clase categorias 
+//para la clase categorias
 class Categoria extends REST_Controller{
 
 	public function __construct(){
@@ -12,12 +12,12 @@ class Categoria extends REST_Controller{
 	}
 //optener todos los datos de la tabla Categoria
 	public function index_get(){
-//se llama al modelo categoria 
+//se llama al modelo categoria
 		$categoria = $this->categoria_model->get();
 //se valida si el resultado no es null de la respuesta
 		if(!is_null($categoria)){
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *'); 
+            header('Access-Control-Allow-Origin: *');
             $this->response( array('categoria'=>$categoria), 200);
 		}
 		else{
@@ -36,7 +36,7 @@ class Categoria extends REST_Controller{
 //si el return de la funcion es true se imprime el resultado
 			if($categoria){
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *'); 
+            header('Access-Control-Allow-Origin: *');
             $this->response( array('categoria'=>$categoria), 200);
 			}
 			else{
@@ -48,7 +48,7 @@ class Categoria extends REST_Controller{
 	public function index_post(){
 		if(!$this->post('categoria')){
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *'); 
+            header('Access-Control-Allow-Origin: *');
 			$this->response(null, 400);
 		}
 
@@ -62,7 +62,7 @@ class Categoria extends REST_Controller{
 		}
 	}
 
-	    //funcion para actualizar 
+	    //funcion para actualizar
     public function index_put($id){
         if(!$this->post('categoria') || !$id){
             $this->response(null, 400);
@@ -78,7 +78,7 @@ class Categoria extends REST_Controller{
         }
     }
 
-    //para borrar un pastel 
+    //para borrar un pastel
     public function index_delete($id){
         if(!$id){
             $this->response(null, 400);
@@ -93,6 +93,25 @@ class Categoria extends REST_Controller{
             $this->response(array('error'=>'no save'), 400);
         }
     }
+
+		//obtener sus productos
+		public function proventas_get($id){
+			//se valida que el id no sea null
+					if(!$id){
+						$this->response(null, 400);
+					}
+			//se llama la funcion get
+					$proventas = $this->categoria_model->getProVentas($id);
+			//si el return de la funcion es true se imprime el resultado
+						if($proventas){
+						header('Content-Type: application/json; charset=UTF-8');
+			            header('Access-Control-Allow-Origin: *');
+			            $this->response( array('categoria'=>$categoria), 200);
+						}
+						else{
+							$this->response(null, 404);
+						}
+		}
 
 }
 ?>

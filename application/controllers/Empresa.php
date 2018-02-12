@@ -1,14 +1,14 @@
-<?php 
+<?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
 
 	require_once APPPATH .'/libraries/REST_Controller.php';
 
 	/**
-	* 
+	*
 	*/
 	class Empresa extends REST_Controller
 	{
-		
+
 		function __construct()
 		{
 			parent::__construct();
@@ -17,13 +17,13 @@
 
 //optener todos los datos de la tabla Categoria
 	public function index_get(){
-//se llama al modelo categoria 
+//se llama al modelo categoria
 		$empresa = $this->empresa_model->get();
 //se valida si el resultado no es null de la respuesta
 		if(!is_null($empresa)){
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *'); 
-            $this->response( array('categoria'=>$empresa), 200);
+            header('Access-Control-Allow-Origin: *');
+            $this->response( array('empresa'=>$empresa), 200);
 		}
 		else{
 			$this->response(null, 400);
@@ -41,8 +41,8 @@
 //si el return de la funcion es true se imprime el resultado
 			if($empresa){
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *'); 
-            $this->response( array('categoria'=>$empresa), 200);
+            header('Access-Control-Allow-Origin: *');
+            $this->response( array('empresa'=>$empresa), 200);
 			}
 			else{
 				$this->response(null, 404);
@@ -53,7 +53,7 @@
 	public function index_post(){
 		if(!$this->post('data')){
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *'); 
+            header('Access-Control-Allow-Origin: *');
 			$this->response(null, 400);
 		}
 
@@ -67,7 +67,7 @@
 		}
 	}
 
-	    //funcion para actualizar 
+	    //funcion para actualizar
     public function index_put($id){
         if(!$this->post('data') || !$id){
             $this->response(null, 400);
@@ -83,7 +83,7 @@
         }
     }
 
-    //para borrar un pastel 
+    //para borrar un pastel
     public function index_delete($id){
         if(!$id){
             $this->response(null, 400);

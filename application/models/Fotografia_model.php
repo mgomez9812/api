@@ -1,6 +1,6 @@
-<?php
+<?php 
 	/**
-	* clase cliente model
+	* clase cliente model 
 	*/
 	class Fotografia_model extends CI_model
 	{
@@ -19,7 +19,7 @@
  		public function get($id = null){
             if(!is_null($id)){
                 $query = $this->db->select('*')->from('fotografias_pasteles')->where('idfoto_pasteles',$id)->get();
-
+                
                 if($query->num_rows()  === 1){
                     return $query->row_array();
                 }
@@ -67,15 +67,29 @@
 
         private function _setFotografiapasteles($fotografia)
         {
+             $dir = "C:/wamp64/www/subirimagen/imagenes"; //recuerda que debe tener permisos de escritura ;)
+             $ext = array('image/jpeg', 'image/gif', 'image/png', 'image/bmp'); //Puedes agregar más extenciones
+                foreach($_FILES as $archivo) {
+                    $attachtmp  = $archivo['tmp_name'];
+                    $attachtype = $archivo['type'];
+                    $attachname = $archivo['name'];
+                    if(file_exists($attachtmp)) {
+                        if(is_uploaded_file($attachtmp)) {
+                            if(in_array($attachtype,$ext)) {
+                                $ruta = move_uploaded_file($attachtmp, "$dir/$attachname");
+                                } else {
+                                    echo "Esto no es una imagen :(";
+                                    }
+                                }
+                            }
+                        }
             return array(
-                'url_foto' => $fotografia['fotografia'],
+                'fotografia_p' => $fotografia['$ruta'],
                 'pro_ventaid' => $fotografia['idventa'],
-            );
-        }
+            ); 
 
 
 
-	}
-
-
- ?>
+	       }
+    }
+?>

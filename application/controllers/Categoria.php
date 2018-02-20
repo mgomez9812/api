@@ -8,7 +8,9 @@ class Categoria extends REST_Controller{
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->model('categoria_model');
+		$this->load->model('categoria_model'
+
+	);
 	}
 //optener todos los datos de la tabla Categoria
 	public function index_get(){
@@ -18,7 +20,8 @@ class Categoria extends REST_Controller{
 		if(!is_null($categoria)){
 			header('Content-Type: application/json; charset=UTF-8');
             header('Access-Control-Allow-Origin: *');
-            $this->response( array('categoria'=>$categoria), 200);
+            //$this->response( array('categoria'=>$categoria), 200);
+			echo json_encode($categoria, JSON_PRETTY_PRINT);
 		}
 		else{
 			$this->response(null, 400);
@@ -106,7 +109,8 @@ class Categoria extends REST_Controller{
 						if($proventas){
 						header('Content-Type: application/json; charset=UTF-8');
 			            header('Access-Control-Allow-Origin: *');
-			            $this->response( array('categoria'=>$proventas), 200);
+			           	//echo json_encode($proventas,JSON_PRETTY_PRINT);
+			            $this->response( array('proventas'=>$proventas), 200);
 						}
 						else{
 							$this->response(null, 404);

@@ -67,12 +67,11 @@
 	}
 
 	public function getProVentas($id = null){
+		
 		if(!is_null($id)){
 			$query = $this->db->select('*')->from('pro_venta')->where('categoria_id',$id)->get();
-
-			if($query->num_rows() === 1){
-				return $query->row_array();
-
+			if($query->num_rows() > 0){
+				return $query->result_array();
 			}
 			return false;
 		}

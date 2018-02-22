@@ -98,7 +98,7 @@
                 'decoracion_pastel' => $venta['ciudad'],
                 'oferta_id' => $venta['telefono'],
                 'categoria_id' => $venta['categoria'],
-
+								'ocacion_id' => $venta['idocacion'],
 
             );
         }

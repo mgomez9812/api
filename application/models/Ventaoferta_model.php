@@ -2,7 +2,7 @@
 	/**
 	* clase cliente model
 	*/
-	class Oferta_model extends CI_model
+	class Ventaoferta_model extends CI_model
 	{
 		/*
 		*constructor de la clase
@@ -18,7 +18,7 @@
 		*/
  		public function get($id = null){
             if(!is_null($id)){
-                $query = $this->db->select('*')->from('oferta')->where('idoferta',$id)->get();
+                $query = $this->db->select('*')->from('pro_venta_a_pro_oferta')->where('pro_venta_idpro_venta',$id)->get();
 
                 if($query->num_rows()  === 1){
                     return $query->row_array();
@@ -26,7 +26,7 @@
                 return false;
             }
 
-            $query = $this->db->select('*')->from('oferta')->get();
+            $query = $this->db->select('*')->from('pro_venta_a_pro_oferta')->get();
             if($query->num_rows() > 0){
                 return $query->result_array();
             }
@@ -34,18 +34,19 @@
             return false;
         }
 
-        public function save($oferta)
+        public function save($venta_oferta)
         {
-            $this->db->set($this->_setOferta($oferta))->insert('oferta');
+            $this->db->set($this->_setViewpasteles($venta_oferta))->insert('cliente');
             if ($this->db->affected_rows() === 1) {
                 return $this->db->insert_id();
             }
             return null;
         }
-        public function update($oferta)
+
+        public function update($venta_oferta)
         {
-            $id = $oferta['id'];
-            $this->db->set($this->_setOferta($oferta))->where('idoferta', $id)->update('oferta');
+            $id = $venta_oferta['id'];
+            $this->db->set($this->_setCliente($venta_oferta))->where('pro_venta_idpro_venta', $id)->update('pro_venta_a_pro_oferta');
             if ($this->db->affected_rows() === 1) {
                 return true;
             }
@@ -53,7 +54,7 @@
         }
         public function delete($id)
         {
-            $this->db->where('idoferta', $id)->delete('oferta');
+            $this->db->where('pro_venta_idpro_venta', $id)->delete('pro_venta_a_pro_oferta');
             if ($this->db->affected_rows() === 1) {
                 return true;
             }
@@ -61,18 +62,15 @@
         }
 
 /*
-*se crea el array para contener toda la informacion la cual sera insertada en la tabla empresa
+*se crea el array para contener toda la informacion la cual sera insertada en la tabla clientes
 *
 */
 
-        private function _setOferta($oferta)
+        private function _setCliente($clientes)
         {
             return array(
-                'finicio_oferta' => $oferta['inicio'],
-                'fefin_oferta' => $oferta['fin'],
-                'descuento_oferta' => $oferta['descuento'],
-                'cantidad_oferta' => $oferta['cantidad'],
-                'estado_oferta' => $oferta['estado'],
+                'pro_venta_idpro_venta' => $clientes['pro_ventaid'],
+                'oferta_idoferta' => $clientes['ofertaid'],
             );
         }
 

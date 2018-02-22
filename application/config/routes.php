@@ -189,13 +189,17 @@ $route['validarpedido']['get'] = 'validarpedido/index';
 $route['validarpedido/(:num)']['get'] = 'validarpedido/find/$1';
 $route['validarpedido']['post'] = 'validarpedido/index';
 $route['validarpedido/(:num)']['put'] = 'validarpedido/index/$1';
-$route['validarpedido`/(:num)']['delete'] = 'validarpedido/index/$1';
-
+$route['validarpedido/(:num)']['delete'] = 'validarpedido/index/$1';
 //
 //
-
-
-
+/*
+*Rutas para pro venta a oferta tabla intermedia
+*/
+$route['ventaoferta']['get'] = 'ventaoferta/index';
+$route['ventaoferta/(:num)']['get'] = 'ventaoferta/find/$1';
+$route['ventaoferta']['post'] = 'ventaoferta/index';
+$route['ventaoferta/(:num)']['put'] = 'ventaoferta/index/$1';
+$route['ventaoferta/(:num)']['delete'] = 'ventaoferta/index/$1';
 /*
 | -------------------------------------------------------------------------
 | Sample REST API Routes

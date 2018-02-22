@@ -1,6 +1,6 @@
-<?php 
+<?php
 	/**
-	* clase cliente model 
+	* clase cliente model
 	*/
 	class Fotografia_model extends CI_model
 	{
@@ -19,7 +19,7 @@
  		public function get($id = null){
             if(!is_null($id)){
                 $query = $this->db->select('*')->from('fotografias_pasteles')->where('idfoto_pasteles',$id)->get();
-                
+
                 if($query->num_rows()  === 1){
                     return $query->row_array();
                 }
@@ -86,7 +86,7 @@
             return array(
                 'fotografia_p' => $fotografia['$ruta'],
                 'pro_ventaid' => $fotografia['idventa'],
-            ); 
+            );
 
 
 

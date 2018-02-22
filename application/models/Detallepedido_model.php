@@ -1,6 +1,6 @@
-<?php 
+<?php
 	/**
-	* clase cliente model 
+	* clase cliente model
 	*/
 	class Detallepedido_model extends CI_model
 	{
@@ -19,7 +19,7 @@
  		public function get($id = null){
             if(!is_null($id)){
                 $query = $this->db->select('*')->from('detalles_pedido')->where('id_dett_pedido',$id)->get();
-                
+
                 if($query->num_rows()  === 1){
                     return $query->row_array();
                 }
@@ -68,12 +68,13 @@
         private function _setDetallespedido($detalles)
         {
             return array(
-                'cantidad_pasteles_pedido' => $detalles['nombre'],
-                'rebanadas_pasteles_pedido' => $detalles['apellido'],
-                'detalles_prod_pedido' => $detalles['direccion'],
-                'foto_decoracion' => $detalles['telefono'],
-                'descripcion_pastel' => $detalles['nickname'],
-                'pasteles_venta_id' => $detalles['password'],
+                'cantidad_pasteles_pedido' => $detalles['cantidad'],
+                'rebanadas_pasteles_pedido' => $detalles['rebanadas'],
+                'detalles_prod_pedido' => $detalles['detalles'],
+                'foto_decoracion' => $detalles['foto_decoracion'],
+                'descripcion_pastel' => $detalles['descripcion'],
+                'pasteles_venta_id' => $detalles['pasteles_id'],
+								'oferta_idoferta' => $detalles['oferta_id'],
 
             );
         }

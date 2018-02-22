@@ -1,31 +1,25 @@
 <?php
-	defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-	require_once APPPATH . '/libraries/REST_Controller.php';
+require_once APPPATH . '/libraries/REST_Controller.php';
 
-	/**
-	*
-	*/
-	class Fotografia extends REST_Controller
-	{
+//para la clase categorias
+class Ventaoferta extends REST_Controller{
 
-		function __construct()
-		{
-			parent::__construct();
-			$this->load->model('fotografia_model');
-		}
-
+	public function __construct(){
+		parent::__construct();
+		$this->load->model('ventaoferta_model');
+	}
 //optener todos los datos de la tabla Categoria
 	public function index_get(){
 //se llama al modelo categoria
-		$data = $this->fotografia_model->get();
+		$venta_a_oferta = $this->ventaoferta_model->get();
 //se valida si el resultado no es null de la respuesta
-		if(!is_null($data)){
+		if(!is_null($venta_a_oferta)){
 			header('Content-Type: application/json; charset=UTF-8');
             header('Access-Control-Allow-Origin: *');
-            $this->response( array('fotografia'=>$data), 200);
-
-    //        echo json_encode($data, JSON_PRETTY_PRINT);
+            $this->response( array('ventaoferta'=>$venta_a_oferta), 200);
+			//echo json_encode($venta_a_oferta, JSON_PRETTY_PRINT);
 		}
 		else{
 			$this->response(null, 400);
@@ -39,12 +33,12 @@
 			$this->response(null, 400);
 		}
 //se llama la funcion get
-		$data = $this->fotografia_model->get($id);
+		$venta_a_oferta = $this->ventaoferta_model->get($id);
 //si el return de la funcion es true se imprime el resultado
-			if($data){
+			if($venta_a_oferta){
 			header('Content-Type: application/json; charset=UTF-8');
             header('Access-Control-Allow-Origin: *');
-            $this->response( array('fotografia'=>$data), 200);
+            $this->response( array('categoria'=>$venta_a_oferta), 200);
 			}
 			else{
 				$this->response(null, 404);
@@ -53,16 +47,16 @@
 
 	//funcion para insertar
 	public function index_post(){
-		if(!$this->post('data')){
+		if(!$this->post('venta_a_oferta')){
 			header('Content-Type: application/json; charset=UTF-8');
             header('Access-Control-Allow-Origin: *');
 			$this->response(null, 400);
 		}
 
-		$id = $this->fotografia_model->save('data');
+		$id = $this->ventaoferta_model->save('venta_a_oferta');
 
 		if(!is_null($id)){
-			$this->respose(array('fotografia'=>$id),200);
+			$this->respose(array('venta_a_oferta'=>$id),200);
 		}
 		else{
 			$this->response(array('error'=>'no save'),400);
@@ -71,14 +65,14 @@
 
 	    //funcion para actualizar
     public function index_put($id){
-        if(!$this->post('data') || !$id){
+        if(!$this->post('venta_a_oferta') || !$id){
             $this->response(null, 400);
         }
 
-        $update = $this->fotografia_model->update($id, $this->post('data'));
 
+        $update = $this->ventaoferta_model->update($id, $this->post('venta_a_oferta'));
         if(!is_null($update)){
-            $this->response(array('fotografia'=>'correct update'),200);
+            $this->response(array('response'=>'correct update'));
         }
         else{
             $this->response(array('error'=>'no save'), 400);
@@ -91,14 +85,16 @@
             $this->response(null, 400);
         }
 
-        $delete = $this->fotografia_model->delete($id);
+        $delete = $this->ventaoferta_model->delete($id);
 
         if(!is_null($delete)){
-            $this->response(array('fotografia'=>'correct delete'), 200);
+            $this->response(array('response'=>'correct delete'), 200);
         }
         else{
             $this->response(array('error'=>'no save'), 400);
         }
     }
-	}
- ?>
+
+		}
+
+?>

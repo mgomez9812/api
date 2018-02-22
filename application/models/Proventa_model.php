@@ -49,7 +49,7 @@
 				if(!is_null($id)){
 	    			return false;
 				}
-				$query = $this->db->select('*')->from('oferta')->where('pro_venta_idpro_venta',$id)->get();
+				$query = $this->db->select('*')->from('pro_venta_a_pro_oferta')->where('pro_venta_idpro_venta',$id)->get();
 
 	           	if($query->num_rows() > 0){
 					return $query->result_array();

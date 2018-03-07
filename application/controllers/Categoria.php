@@ -98,7 +98,7 @@ class Categoria extends REST_Controller{
     }
 
 		//obtener sus productos
-		public function proventas_get($id){
+		public function proventas_get($id, $solicitante){
 			//se valida que el id no sea null
 					if(!$id){
 						$this->response(null, 400);
@@ -109,8 +109,13 @@ class Categoria extends REST_Controller{
 						if($proventas){
 						header('Content-Type: application/json; charset=UTF-8');
 			            header('Access-Control-Allow-Origin: *');
-			           	//echo json_encode($proventas,JSON_PRETTY_PRINT);
-			            $this->response( array('proventas'=>$proventas), 200);
+									if($solicitante ==0){
+										echo json_encode($proventas,JSON_PRETTY_PRINT);
+									}
+			           	else{
+										 $this->response( array('proventas'=>$proventas), 200);
+									}
+
 						}
 						else{
 							$this->response(null, 404);

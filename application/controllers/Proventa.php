@@ -16,14 +16,20 @@
 		}
 
 //optener todos los datos de la tabla Categoria
-	public function index_get(){
+	public function index_get($seleccionar){
 //se llama al modelo categoria
 		$data = $this->proventa_model->get();
 //se valida si el resultado no es null de la respuesta
 		if(!is_null($data)){
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *');
-            $this->response( array('proventa'=>$data), 200);
+      header('Access-Control-Allow-Origin: *');
+
+			if ($seleccionar == 0) {
+				echo json_encode($data, JSON_PRETTY_PRINT);
+			}
+			else{
+				$this->response( array('proventa'=>$data), 200);
+			}
 		}
 		else{
 			$this->response(null, 400);
@@ -31,14 +37,19 @@
 	}
 
 	//obtener imagenes del producto
-	public function imagen_get($id){
+	public function imagen_get($id, $seleccionar){
 		//se llama al modelo categoria
 				$data = $this->proventa_model->fotografias();
 		//se valida si el resultado no es null de la respuesta
 				if(!is_null($data)){
 					header('Content-Type: application/json; charset=UTF-8');
-		            header('Access-Control-Allow-Origin: *');
-		            $this->response( array('fotografias'=>$data), 200);
+		      header('Access-Control-Allow-Origin: *');
+					if ($seleccionar == 0) {
+						echo json_encode($data, JSON_PRETTY_PRINT);
+					}
+					else{
+						$this->response( array('fotografias'=>$data), 200);
+					}
 				}
 				else{
 					$this->response(null, 400);

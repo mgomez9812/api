@@ -11,14 +11,19 @@ class Ventaoferta extends REST_Controller{
 		$this->load->model('ventaoferta_model');
 	}
 //optener todos los datos de la tabla Categoria
-	public function index_get(){
+	public function index_get($seleccionar){
 //se llama al modelo categoria
 		$venta_a_oferta = $this->ventaoferta_model->get();
 //se valida si el resultado no es null de la respuesta
 		if(!is_null($venta_a_oferta)){
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *');
-            $this->response( array('ventaoferta'=>$venta_a_oferta), 200);
+      header('Access-Control-Allow-Origin: *');
+			if ($seleccionar == 0) {
+				echo json_encode($venta_a_oferta, JSON_PRETTY_PRINT);
+			}
+			else{
+				$this->response( array('ventaoferta'=>$venta_a_oferta), 200);
+			}
 			//echo json_encode($venta_a_oferta, JSON_PRETTY_PRINT);
 		}
 		else{
@@ -27,7 +32,7 @@ class Ventaoferta extends REST_Controller{
 	}
 
 //funcion para buscar por id en la tabla categoria
-	public function find_get($id){
+	public function find_get($id, $seleccionar){
 //se valida que el id no sea null
 		if(!$id){
 			$this->response(null, 400);
@@ -37,8 +42,13 @@ class Ventaoferta extends REST_Controller{
 //si el return de la funcion es true se imprime el resultado
 			if($venta_a_oferta){
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *');
-            $this->response( array('ventaoferta'=>$venta_a_oferta), 200);
+      header('Access-Control-Allow-Origin: *');
+			if ($seleccionar == 0) {
+				echo json_encode($venta_a_oferta, JSON_PRETTY_PRINT);
+			}
+			else{
+				$this->response( array('ventaoferta'=>$venta_a_oferta), 200);
+			}
 			}
 			else{
 				$this->response(null, 404);

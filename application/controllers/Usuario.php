@@ -1,15 +1,15 @@
-<?php 
+<?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
 
 	require_once APPPATH . '/libraries/REST_Controller.php';
 /**
-* 
+*
 */
 class Usuario extends REST_Controller
 {
-	
+
 	/**
-	* 
+	*
 	*/
 		public function __construct()
 		{
@@ -18,14 +18,19 @@ class Usuario extends REST_Controller
 		}
 
 //optener todos los datos de la tabla Categoria
-	public function index_get(){
-//se llama al modelo categoria 
+	public function index_get($seleccionar){
+//se llama al modelo categoria
 		$data = $this->usuario_model->get();
 //se valida si el resultado no es null de la respuesta
 		if(!is_null($data)){
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *'); 
-            $this->response( array('usuario'=>$data), 200);
+      header('Access-Control-Allow-Origin: *');
+			if ($seleccionar == 0) {
+					echo json_encode($data, JSON_PRETTY_PRINT);
+				}
+				else{
+					$this->response( array('usuario'=>$data), 200);
+				}
 		}
 		else{
 			$this->response(null, 400);
@@ -43,7 +48,7 @@ class Usuario extends REST_Controller
 //si el return de la funcion es true se imprime el resultado
 			if($data){
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *'); 
+            header('Access-Control-Allow-Origin: *');
             $this->response( array('usuario'=>$data), 200);
 			}
 			else{
@@ -55,7 +60,7 @@ class Usuario extends REST_Controller
 	public function index_post(){
 		if(!$this->post('data')){
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *'); 
+            header('Access-Control-Allow-Origin: *');
 			$this->response(null, 400);
 		}
 
@@ -69,7 +74,7 @@ class Usuario extends REST_Controller
 		}
 	}
 
-	    //funcion para actualizar 
+	    //funcion para actualizar
     public function index_put($id){
         if(!$this->post('data') || !$id){
             $this->response(null, 400);
@@ -85,7 +90,7 @@ class Usuario extends REST_Controller
         }
     }
 
-    //para borrar un pastel 
+    //para borrar un pastel
     public function index_delete($id){
         if(!$id){
             $this->response(null, 400);

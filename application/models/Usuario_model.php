@@ -1,6 +1,6 @@
-<?php 
+<?php
 	/**
-	* clase cliente model 
+	* clase cliente model
 	*/
 	class Usuario_model extends CI_model
 	{
@@ -19,7 +19,7 @@
  		public function get($id = null){
             if(!is_null($id)){
                 $query = $this->db->select('*')->from('usuario')->where('idusuario',$id)->get();
-                
+
                 if($query->num_rows()  === 1){
                     return $query->row_array();
                 }
@@ -65,16 +65,16 @@
 *
 */
 
-        private function _setUsuario($empresa)
+        private function _setUsuario($usuario)
         {
             return array(
-                'nombre_user' => $empresa['nombre'],
-                'apellido_user' => $empresa['apellido'],
-                'direccion_user' => $empresa['direccion'],
-                'telefono_user' => $empresa['telefono'],
-                'nickname_user' => $empresa['nickname'],
-                'password_user' => $empresa['password'],
-                'tipo_usuarioid' => $empresa['tipo'],
+                'nombre_user' => $usuario['nombre'],
+                'apellido_user' => $usuario['apellido'],
+                'direccion_user' => $usuario['direccion'],
+                'telefono_user' => $usuario['telefono'],
+                'nickname_user' => $usuario['nickname'],
+                'password_user' => $usuario['password'],
+                'tipo_usuarioid' => $usuario['tipo'],
 
             );
         }

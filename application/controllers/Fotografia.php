@@ -16,14 +16,21 @@
 		}
 
 //optener todos los datos de la tabla Categoria
-	public function index_get(){
+	public function index_get($seleccion){
 //se llama al modelo categoria
 		$data = $this->fotografia_model->get();
 //se valida si el resultado no es null de la respuesta
 		if(!is_null($data)){
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *');
-            $this->response( array('fotografia'=>$data), 200);
+      header('Access-Control-Allow-Origin: *');
+
+			if ($seleccion == 0) {
+				echo json_encode($data, JSON_PRETTY_PRINT);
+			}
+			else{
+				$this->response( array('fotografia'=>$data), 200);
+			}
+
 
     //        echo json_encode($data, JSON_PRETTY_PRINT);
 		}
@@ -33,7 +40,7 @@
 	}
 
 //funcion para buscar por id en la tabla categoria
-	public function find_get($id){
+	public function find_get($id, $seleccion){
 //se valida que el id no sea null
 		if(!$id){
 			$this->response(null, 400);
@@ -43,8 +50,14 @@
 //si el return de la funcion es true se imprime el resultado
 			if($data){
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *');
-            $this->response( array('fotografia'=>$data), 200);
+      header('Access-Control-Allow-Origin: *');
+
+			if($seleccion == 0){
+				echo json_encode($data, JSON_PRETTY_PRINT);
+			}
+			else{
+				$this->response( array('fotografia'=>$data), 200);
+			}
 			}
 			else{
 				$this->response(null, 404);

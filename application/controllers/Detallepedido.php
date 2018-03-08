@@ -1,28 +1,34 @@
-<?php 
+<?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
 
 	require_once APPPATH . '/libraries/REST_Controller.php';
 
 	/**
-	* 
+	*
 	*/
 	class Detallepedido extends REST_Controller
 	{
-		
+
 		function __construct()
 		{
 			parent::__construct();
 			$this->load->model('detallepedido_model');
 		}
 //optener todos los datos de la tabla Categoria
-	public function index_get(){
-//se llama al modelo categoria 
+	public function index_get($seleccion){
+//se llama al modelo categoria
 		$detallepedido = $this->detallepedido_model->get();
 //se valida si el resultado no es null de la respuesta
 		if(!is_null($detallepedido)){
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *'); 
-            $this->response( array('categoria'=>$detallepedido), 200);
+      header('Access-Control-Allow-Origin: *');
+			if ($seleccion) {
+				echo json_enconde($detallepedido, JSON_PRETTY_PRINT);
+			}
+			else{
+		  $this->response( array('categoria'=>$detallepedido), 200);
+			}
+
 		}
 		else{
 			$this->response(null, 400);
@@ -30,7 +36,7 @@
 	}
 
 //funcion para buscar por id en la tabla categoria
-	public function find_get($id){
+	public function find_get($id, $seleccion){
 //se valida que el id no sea null
 		if(!$id){
 			$this->response(null, 400);
@@ -39,9 +45,16 @@
 		$detallepedido = $this->detallepedido_model->get($id);
 //si el return de la funcion es true se imprime el resultado
 			if($detallepedido){
-			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *'); 
-            $this->response( array('categoria'=>$detallepedido), 200);
+				header('Content-Type: application/json; charset=UTF-8');
+        header('Access-Control-Allow-Origin: *');
+
+				if ($seleccion == 0) {
+					echo json_encode($detallepedido, JSON_PRETTY_PRINT);
+				}
+				else{
+					$this->response( array('categoria'=>$detallepedido), 200);
+				}
+
 			}
 			else{
 				$this->response(null, 404);
@@ -52,7 +65,7 @@
 	public function index_post(){
 		if(!$this->post('cliente')){
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *'); 
+            header('Access-Control-Allow-Origin: *');
 			$this->response(null, 400);
 		}
 
@@ -66,7 +79,7 @@
 		}
 	}
 
-	    //funcion para actualizar 
+	    //funcion para actualizar
     public function index_put($id){
         if(!$this->post('dpedido') || !$id){
             $this->response(null, 400);
@@ -82,7 +95,7 @@
         }
     }
 
-    //para borrar un pastel 
+    //para borrar un pastel
     public function index_delete($id){
         if(!$id){
             $this->response(null, 400);

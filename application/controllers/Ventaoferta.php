@@ -38,7 +38,7 @@ class Ventaoferta extends REST_Controller{
 			if($venta_a_oferta){
 			header('Content-Type: application/json; charset=UTF-8');
             header('Access-Control-Allow-Origin: *');
-            $this->response( array('categoria'=>$venta_a_oferta), 200);
+            $this->response( array('ventaoferta'=>$venta_a_oferta), 200);
 			}
 			else{
 				$this->response(null, 404);

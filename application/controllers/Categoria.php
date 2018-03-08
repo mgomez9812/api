@@ -109,7 +109,7 @@ class Categoria extends REST_Controller{
 						if($proventas){
 						header('Content-Type: application/json; charset=UTF-8');
 			            header('Access-Control-Allow-Origin: *');
-									if($solicitante ==0){
+									if($solicitante == 0){
 										echo json_encode($proventas,JSON_PRETTY_PRINT);
 									}
 			           	else{

@@ -36,7 +36,7 @@
 
         public function save($cliente)
         {
-            $this->db->set($this->_setViewpasteles($cliente))->insert('cliente');
+            $this->db->set($this->_setCliente($cliente))->insert('cliente');
             if ($this->db->affected_rows() === 1) {
                 return $this->db->insert_id();
             }

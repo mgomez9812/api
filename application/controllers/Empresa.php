@@ -54,7 +54,7 @@
 			else{
 				$this->response( array('empresa'=>$empresa), 200);
 			}
-            
+
 			}
 			else{
 				$this->response(null, 404);
@@ -63,13 +63,13 @@
 
 	//funcion para insertar
 	public function index_post(){
-		if(!$this->post('data')){
+		if(!$this->post()){
 			header('Content-Type: application/json; charset=UTF-8');
             header('Access-Control-Allow-Origin: *');
 			$this->response(null, 400);
 		}
 
-		$id = $this->empresa_model->save('data');
+		$id = $this->empresa_model->save($this->post());
 
 		if(!is_null($id)){
 			$this->respose(array('empresa'=>$id),200);

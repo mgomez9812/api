@@ -63,16 +63,19 @@
 
 	//funcion para insertar
 	public function index_post(){
-		if(!$this->post('cliente')){
+		
+		if(!$this->post()){
+
 			header('Content-Type: application/json; charset=UTF-8');
             header('Access-Control-Allow-Origin: *');
 			$this->response(null, 400);
 		}
 
-		$id = $this->cliente_model->save('cliente');
+		echo $this->post('cliente');
+		$id = $this->cliente_model->save($this->post());
 
 		if(!is_null($id)){
-			$this->respose(array('cliente_post'=>$id),200);
+			$this->response(array('cliente_post'=>$id),200);
 		}
 		else{
 			$this->response(array('error'=>'no save'),400);

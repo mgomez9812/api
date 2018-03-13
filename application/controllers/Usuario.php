@@ -49,7 +49,12 @@ class Usuario extends REST_Controller
 			if($data){
 			header('Content-Type: application/json; charset=UTF-8');
             header('Access-Control-Allow-Origin: *');
-            $this->response( array('usuario'=>$data), 200);
+						if ($seleccionar == 0) {
+								echo json_encode($data, JSON_PRETTY_PRINT);
+							}
+							else{
+								$this->response( array('usuario'=>$data), 200);
+							}
 			}
 			else{
 				$this->response(null, 404);

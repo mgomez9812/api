@@ -48,7 +48,7 @@
 				header('Content-Type: application/json; charset=UTF-8');
 				header('Access-Control-Allow-Origin: *');
 
-				if ($solicitud) {
+				if ($solicitud==0) {
 					  echo json_encode($data, JSON_PRETTY_PRINT);
 				}
 				else{

@@ -49,13 +49,13 @@ class Categoria extends REST_Controller{
 
 	//funcion para insertar
 	public function index_post(){
-		if(!$this->post('categoria')){
+		if(!$this->post()){
 			header('Content-Type: application/json; charset=UTF-8');
             header('Access-Control-Allow-Origin: *');
 			$this->response(null, 400);
 		}
 
-		$id = $this->categoria_model->save('categoria');
+		$id = $this->categoria_model->save($this->post());
 
 		if(!is_null($id)){
 			$this->respose(array('categoria_post'=>$id),200);

@@ -22,7 +22,7 @@
 		if(!is_null($detallepedido)){
 			header('Content-Type: application/json; charset=UTF-8');
       header('Access-Control-Allow-Origin: *');
-			if ($seleccion) {
+			if ($seleccion == 0) {
 				echo json_enconde($detallepedido, JSON_PRETTY_PRINT);
 			}
 			else{
@@ -63,13 +63,13 @@
 
 	//funcion para insertar
 	public function index_post(){
-		if(!$this->post('cliente')){
+		if(!$this->post()){
 			header('Content-Type: application/json; charset=UTF-8');
             header('Access-Control-Allow-Origin: *');
 			$this->response(null, 400);
 		}
 
-		$id = $this->detallepedido_model->save('dpedido');
+		$id = $this->detallepedido_model->save($this->post());
 
 		if(!is_null($id)){
 			$this->respose(array('cliente_post'=>$id),200);

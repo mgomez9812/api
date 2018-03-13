@@ -56,7 +56,7 @@
 			}
 			}
 			else{
-				$this->response(null, 404);
+				$this->response(nusll, 404);
 			}
 	}
 

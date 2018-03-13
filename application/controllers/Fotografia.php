@@ -66,13 +66,13 @@
 
 	//funcion para insertar
 	public function index_post(){
-		if(!$this->post('data')){
+		if(!$this->post()){
 			header('Content-Type: application/json; charset=UTF-8');
             header('Access-Control-Allow-Origin: *');
 			$this->response(null, 400);
 		}
 
-		$id = $this->fotografia_model->save('data');
+		$id = $this->fotografia_model->save($this->post());
 
 		if(!is_null($id)){
 			$this->respose(array('fotografia'=>$id),200);

@@ -1,6 +1,6 @@
-<?php 
+<?php
 	/**
-	* clase cliente model 
+	* clase cliente model
 	*/
 	class Ocacion_model extends CI_model
 	{
@@ -19,7 +19,7 @@
  		public function get($id = null){
             if(!is_null($id)){
                 $query = $this->db->select('*')->from('ocacion')->where('idocacion',$id)->get();
-                
+
                 if($query->num_rows()  === 1){
                     return $query->row_array();
                 }
@@ -65,10 +65,10 @@
 *
 */
 
-        private function _setOcacion($ocacion)
+        private function _setOcacion($data)
         {
             return array(
-                'nombre_oc' => $ocacion['nombre'],
+                'nombre_oc' => $data['nombre'],
             );
         }
 

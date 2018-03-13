@@ -63,18 +63,26 @@
 
 	//funcion para insertar
 	public function index_post(){
+		header('Content-Type: application/json; charset=UTF-8');
+		header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+		header('Access-Control-Allow-Origin: *');
+
 		if(!$this->post('data')){
-			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *');
 			$this->response(null, 400);
 		}
 
 		$id = $this->ocacion_model->save('data');
 
 		if(!is_null($id)){
+			header('Content-Type: application/json; charset=UTF-8');
+			header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+      header('Access-Control-Allow-Origin: *');
 			$this->respose(array('ocacion'=>$id),200);
 		}
 		else{
+			header('Content-Type: application/json; charset=UTF-8');
+			header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+      header('Access-Control-Allow-Origin: *');
 			$this->response(array('error'=>'no save'),400);
 		}
 	}

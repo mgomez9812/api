@@ -29,8 +29,6 @@
 			else{
 				$this->response( array('categoria'=>$cliente), 200);
 			}
-
-
 		}
 		else{
 			$this->response(null, 400);

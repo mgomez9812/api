@@ -1,6 +1,6 @@
-<?php 
+<?php
 	/**
-	* clase cliente model 
+	* clase cliente model
 	*/
 	class Cliente_model extends CI_model
 	{
@@ -19,7 +19,7 @@
  		public function get($id = null){
             if(!is_null($id)){
                 $query = $this->db->select('*')->from('cliente')->where('idcliente',$id)->get();
-                
+
                 if($query->num_rows()  === 1){
                     return $query->row_array();
                 }
@@ -36,7 +36,7 @@
 
         public function save($cliente)
         {
-            $this->db->set($this->_setViewpasteles($cliente))->insert('cliente');
+            $this->db->set($this->_setCliente($cliente))->insert('cliente');
             if ($this->db->affected_rows() === 1) {
                 return $this->db->insert_id();
             }
@@ -61,7 +61,7 @@
         }
 
 /*
-*se crea el array para contener toda la informacion la cual sera insertada en la tabla clientes 
+*se crea el array para contener toda la informacion la cual sera insertada en la tabla clientes
 *
 */
 

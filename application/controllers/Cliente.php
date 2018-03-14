@@ -63,7 +63,7 @@
 
 	//funcion para insertar
 	public function index_post(){
-		
+
 		if(!$this->post()){
 
 			header('Content-Type: application/json; charset=UTF-8');
@@ -73,7 +73,6 @@
 
 		echo $this->post('cliente');
 		$id = $this->cliente_model->save($this->post());
-
 		if(!is_null($id)){
 			$this->response(array('cliente_post'=>$id),200);
 		}

@@ -23,7 +23,7 @@
 			header('Content-Type: application/json; charset=UTF-8');
       header('Access-Control-Allow-Origin: *');
 			if ($seleccion == 0) {
-				echo json_enconde($detallepedido, JSON_PRETTY_PRINT);
+				echo json_encode($detallepedido, JSON_PRETTY_PRINT);
 			}
 			else{
 		  $this->response( array('categoria'=>$detallepedido), 200);
@@ -72,7 +72,7 @@
 		$id = $this->detallepedido_model->save($this->post());
 
 		if(!is_null($id)){
-			$this->respose(array('cliente_post'=>$id),200);
+			$this->response(array('cliente_post'=>$id),200);
 		}
 		else{
 			$this->response(array('error'=>'no save'),400);
@@ -81,11 +81,11 @@
 
 	    //funcion para actualizar
     public function index_put($id){
-        if(!$this->post('dpedido') || !$id){
+        if(!$this->put() || !$id){
             $this->response(null, 400);
         }
 
-        $update = $this->detallepedido_model->update($id, $this->post('dpedido'));
+        $update = $this->detallepedido_model->update($id, $this->put());
 
         if(!is_null($update)){
             $this->response(array('response'=>'correct update'));

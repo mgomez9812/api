@@ -42,9 +42,8 @@
             }
             return null;
         }
-        public function update($oferta)
+        public function update($id, $oferta)
         {
-            $id = $oferta['id'];
             $this->db->set($this->_setOferta($oferta))->where('idoferta', $id)->update('oferta');
             if ($this->db->affected_rows() === 1) {
                 return true;

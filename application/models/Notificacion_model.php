@@ -1,6 +1,6 @@
-<?php 
+<?php
 	/**
-	* clase cliente model 
+	* clase cliente model
 	*/
 	class Notificacion_model extends CI_model
 	{
@@ -19,7 +19,7 @@
  		public function get($id = null){
             if(!is_null($id)){
                 $query = $this->db->select('*')->from('notificacion')->where('idnotificacion',$id)->get();
-                
+
                 if($query->num_rows()  === 1){
                     return $query->row_array();
                 }
@@ -42,10 +42,9 @@
             }
             return null;
         }
-        public function update($notificacion)
+        public function update($id, $notificacion)
         {
-            $id = $notificacion['id'];
-            $this->db->set($this->_setDetallespedido($notificacion))->where('idnotificacion', $id)->update('notificacion');
+            $this->db->set($this->_setNotificacion($notificacion))->where('idnotificacion', $id)->update('notificacion');
             if ($this->db->affected_rows() === 1) {
                 return true;
             }
@@ -69,7 +68,7 @@
             return array(
                 'estado_notificacion' => $notificacion['estado'],
                 'pedido_idpedido' => $notificacion['pedidoid'],
-                
+
             );
         }
 

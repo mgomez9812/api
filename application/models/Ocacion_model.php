@@ -42,15 +42,18 @@
             }
             return null;
         }
-        public function update($ocacion)
+
+
+        public function update($id, $ocacion)
         {
-            $id = $ocacion['id'];
-            $this->db->set($this->_setOcacion($empresa))->where('idocacion', $id)->update('ocacion');
+            $this->db->set($this->_setOcacion($ocacion))->where('idocacion', $id)->update('ocacion');
             if ($this->db->affected_rows() === 1) {
                 return true;
             }
             return null;
         }
+
+
         public function delete($id)
         {
             $this->db->where('idocacion', $id)->delete('ocacion');
@@ -64,17 +67,11 @@
 *se crea el array para contener toda la informacion la cual sera insertada en la tabla ocacion
 *
 */
-
         private function _setOcacion($data)
         {
             return array(
-                'nombre_oc' => $data['nombre'],
+                'nombre_oc' => $data['nombre']
             );
         }
-
-
-
 	}
-
-
  ?>

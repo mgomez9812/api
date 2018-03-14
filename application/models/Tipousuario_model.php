@@ -1,6 +1,6 @@
-<?php 
+<?php
 	/**
-	* clase cliente model 
+	* clase cliente model
 	*/
 	class Tipousuario_model extends CI_model
 	{
@@ -19,7 +19,7 @@
  		public function get($id = null){
             if(!is_null($id)){
                 $query = $this->db->select('*')->from('tipo_usuario')->where('idtipo_usuario',$id)->get();
-                
+
                 if($query->num_rows()  === 1){
                     return $query->row_array();
                 }
@@ -42,10 +42,10 @@
             }
             return null;
         }
-        public function update($tipo_usuario)
+
+			  public function update($id, $tipo_usuario)
         {
-            $id = $tipo_usuario['id'];
-            $this->db->set($this->_setDetallespedido($tipo_usuario))->where('idtipo_usuario', $id)->update('tipo_usuario');
+            $this->db->set($this->_setTipousuario($tipo_usuario))->where('idtipo_usuario', $id)->update('tipo_usuario');
             if ($this->db->affected_rows() === 1) {
                 return true;
             }
@@ -68,7 +68,7 @@
         private function _setTipousuario($tipo_usuario)
         {
             return array(
-                'nombre_tipo_usuario' => $empresa['nombre'],
+                'nombre_tipo_usuario' => $tipo_usuario['nombre'],
             );
         }
 

@@ -60,11 +60,11 @@ class ViewPasteles extends REST_Controller {
 
     //funcion para insertar
     public function index_post(){
-        if(!$this->post('viewpasteles')){
+        if(!$this->post()){
             $this->response(null,404);
         }
 
-        $id = $this->viewpasteles_model->save('viewpasteles');
+        $id = $this->viewpasteles_model->save($this->post());
 
         if(!is_null($id)){
             $this->response(array('response'=>$id), 200);
@@ -76,11 +76,11 @@ class ViewPasteles extends REST_Controller {
 
     //funcion para actualizar
     public function index_put($id){
-        if(!$this->post('viewpasteles') || !$id){
+        if(!$this->put() || !$id){
             $this->response(null, 400);
         }
 
-        $update = $this->viepasteles_model->update($id, $this->post('viewpasteles'));
+        $update = $this->viepasteles_model->update($id, $this->put());
 
         if(!is_null($update)){
             $this->response(array('response'=>'correct update'));

@@ -57,16 +57,16 @@ class Ventaoferta extends REST_Controller{
 
 	//funcion para insertar
 	public function index_post(){
-		if(!$this->post('venta_a_oferta')){
+		if(!$this->post()){
 			header('Content-Type: application/json; charset=UTF-8');
             header('Access-Control-Allow-Origin: *');
 			$this->response(null, 400);
 		}
 
-		$id = $this->ventaoferta_model->save('venta_a_oferta');
+		$id = $this->ventaoferta_model->save($this->post());
 
 		if(!is_null($id)){
-			$this->respose(array('venta_a_oferta'=>$id),200);
+			$this->response(array('venta_a_oferta'=>$id),200);
 		}
 		else{
 			$this->response(array('error'=>'no save'),400);
@@ -75,12 +75,12 @@ class Ventaoferta extends REST_Controller{
 
 	    //funcion para actualizar
     public function index_put($id){
-        if(!$this->post('venta_a_oferta') || !$id){
+        if(!$this->put() || !$id){
             $this->response(null, 400);
         }
 
 
-        $update = $this->ventaoferta_model->update($id, $this->post('venta_a_oferta'));
+        $update = $this->ventaoferta_model->update($id, $this->put());
         if(!is_null($update)){
             $this->response(array('response'=>'correct update'));
         }

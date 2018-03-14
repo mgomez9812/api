@@ -42,10 +42,9 @@
             }
             return null;
         }
-        public function update($cliente)
+        public function update($id, $cliente)
         {
-            $id = $cliente['id'];
-            $this->db->set($this->_setCliente($clientes))->where('idcliente', $id)->update('cliente');
+            $this->db->set($this->_setCliente($cliente))->where('idcliente', $id)->update('cliente');
             if ($this->db->affected_rows() === 1) {
                 return true;
             }

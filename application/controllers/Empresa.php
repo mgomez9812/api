@@ -64,7 +64,7 @@
 	//funcion para insertar
 	public function index_post(){
 		if(!$this->post()){
-			header('Content-Type: application/json; charset=UTF-8');
+						header('Content-Type: application/json; charset=UTF-8');
             header('Access-Control-Allow-Origin: *');
 			$this->response(null, 400);
 		}
@@ -72,7 +72,7 @@
 		$id = $this->empresa_model->save($this->post());
 
 		if(!is_null($id)){
-			$this->respose(array('empresa'=>$id),200);
+			$this->response(array('empresa'=>$id),200);
 		}
 		else{
 			$this->response(array('error'=>'no save'),400);
@@ -81,11 +81,11 @@
 
 	    //funcion para actualizar
     public function index_put($id){
-        if(!$this->post('data') || !$id){
+        if(!$this->put() || !$id){
             $this->response(null, 400);
         }
 
-        $update = $this->empresa_model->update($id, $this->post('data'));
+        $update = $this->empresa_model->update($id, $this->put());
 
         if(!is_null($update)){
             $this->response(array('empresa'=>'correct update'),200);

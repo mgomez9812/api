@@ -42,9 +42,8 @@
             }
             return null;
         }
-        public function update($detalles)
+        public function update($id, $detalles)
         {
-            $id = $detalles['id'];
             $this->db->set($this->_setDetallespedido($detalles))->where('id_dett_pedido', $id)->update('detalles_pedido');
             if ($this->db->affected_rows() === 1) {
                 return true;

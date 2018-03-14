@@ -1,6 +1,6 @@
-<?php 
+<?php
 	/**
-	* clase cliente model 
+	* clase cliente model
 	*/
 	class Validarpedido_model extends CI_model
 	{
@@ -19,7 +19,7 @@
  		public function get($id = null){
             if(!is_null($id)){
                 $query = $this->db->select('*')->from('validar_pedido')->where('idvalidar_pedido',$id)->get();
-                
+
                 if($query->num_rows()  === 1){
                     return $query->row_array();
                 }
@@ -36,16 +36,15 @@
 
         public function save($validar_pedido)
         {
-            $this->db->set($this->_setTipousuario($validar_pedido))->insert('validar_pedido');
+            $this->db->set($this->_setValidar($validar_pedido))->insert('validar_pedido');
             if ($this->db->affected_rows() === 1) {
                 return $this->db->insert_id();
             }
             return null;
         }
-        public function update($validar_pedido)
+        public function update($id, $validar_pedido)
         {
-            $id = $validar_pedido['id'];
-            $this->db->set($this->_setDetallespedido($validar_pedido))->where('idvalidar_pedido', $id)->update('validar_pedido');
+            $this->db->set($this->_setValidar($validar_pedido))->where('idvalidar_pedido', $id)->update('validar_pedido');
             if ($this->db->affected_rows() === 1) {
                 return true;
             }
@@ -65,10 +64,10 @@
 *
 */
 
-        private function _setTipousuario($tipousuario)
+        private function _setValidar($tipousuario)
         {
             return array(
-                'estado_valider_pedido' => $tipousuario['estado'],
+                'estado_validar_pedido' => $tipousuario['estado'],
                 'usuario_idusuario' => $tipousuario['usuarioid'],
                 'pedido_idpedido' => $tipousuario['pedidoid'],
             );

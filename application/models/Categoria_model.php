@@ -37,8 +37,7 @@
 	}
 
 //funcion para realizar una actualizacion
-		public function update($categoria){
-			$id = $categoria['id'];
+		public function update($id, $categoria){
 			$this->db->set($this->_setCategoria($categoria))->where('idcategoria', $id)->update('categoria');
 
 			if($this->db->affected_rows() === 1){
@@ -67,7 +66,7 @@
 	}
 
 	public function getProVentas($id = null){
-		
+
 		if(!is_null($id)){
 			$query = $this->db->select('*')->from('pro_venta')->where('categoria_id',$id)->get();
 			if($query->num_rows() > 0){

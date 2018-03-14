@@ -1,6 +1,6 @@
-<?php 
+<?php
 	/**
-	* clase cliente model 
+	* clase cliente model
 	*/
 	class Pedido_model extends CI_model
 	{
@@ -13,13 +13,13 @@
 		}
 
 		/*
-		*funcion para seleccionar los datos de la tabla pedidos 
+		*funcion para seleccionar los datos de la tabla pedidos
 		*
 		*/
  		public function get($id = null){
             if(!is_null($id)){
                 $query = $this->db->select('*')->from('pedido')->where('idpedido',$id)->get();
-                
+
                 if($query->num_rows()  === 1){
                     return $query->row_array();
                 }
@@ -44,9 +44,8 @@
         }
 
 
-        public function update($pedido)
+        public function update($id, $pedido)
         {
-            $id = $pedido['id'];
             $this->db->set($this->_setPedido($pedido))->where('idpedido', $id)->update('pedido');
             if ($this->db->affected_rows() === 1) {
                 return true;
@@ -75,7 +74,7 @@
                 'fecha_entrega_pedido' => $pedido['entrega'],
                 'correo_contacto_pedido' => $pedido['correo'],
                 'boleta_deposito_pedido' => $pedido['boleta'],
-                'cliente_id_cliente' => $pedido['clienteid'],
+                'cliente_idcliente' => $pedido['clienteid'],
                 'idpasteles_pedido' => $pedido['idpasteles'],
 
             );

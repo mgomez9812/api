@@ -36,16 +36,15 @@
 
         public function save($fotografia)
         {
-            $this->db->set($this->_setDetallespedido($fotografia))->insert('fotografias_pasteles');
+            $this->db->set($this->_setFotografiapasteles($fotografia))->insert('fotografias_pasteles');
             if ($this->db->affected_rows() === 1) {
                 return $this->db->insert_id();
             }
             return null;
         }
-        public function update($fotografia)
+        public function update($id,$fotografia)
         {
-            $id = $fotografia['id'];
-            $this->db->set($this->_setDetallespedido($empresa))->where('idfoto_pasteles', $id)->update('fotografia_pasteles');
+            $this->db->set($this->_setFotografiapasteles($fotografia))->where('idfoto_pasteles', $id)->update('fotografias_pasteles');
             if ($this->db->affected_rows() === 1) {
                 return true;
             }
@@ -67,24 +66,8 @@
 
         private function _setFotografiapasteles($fotografia)
         {
-             $dir = "C:/wamp64/www/subirimagen/imagenes"; //recuerda que debe tener permisos de escritura ;)
-             $ext = array('image/jpeg', 'image/gif', 'image/png', 'image/bmp'); //Puedes agregar más extenciones
-                foreach($_FILES as $archivo) {
-                    $attachtmp  = $archivo['tmp_name'];
-                    $attachtype = $archivo['type'];
-                    $attachname = $archivo['name'];
-                    if(file_exists($attachtmp)) {
-                        if(is_uploaded_file($attachtmp)) {
-                            if(in_array($attachtype,$ext)) {
-                                $ruta = move_uploaded_file($attachtmp, "$dir/$attachname");
-                                } else {
-                                    echo "Esto no es una imagen :(";
-                                    }
-                                }
-                            }
-                        }
             return array(
-                'fotografia_p' => $fotografia['$ruta'],
+                'url_foto' => $fotografia['ruta'],
                 'pro_ventaid' => $fotografia['idventa'],
             );
 

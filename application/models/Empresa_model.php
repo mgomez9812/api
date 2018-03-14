@@ -1,6 +1,6 @@
-<?php 
+<?php
 	/**
-	* clase cliente model 
+	* clase cliente model
 	*/
 	class Empresa_model extends CI_model
 	{
@@ -19,7 +19,7 @@
  		public function get($id = null){
             if(!is_null($id)){
                 $query = $this->db->select('*')->from('empresa')->where('idempresa',$id)->get();
-                
+
                 if($query->num_rows()  === 1){
                     return $query->row_array();
                 }
@@ -42,9 +42,8 @@
             }
             return null;
         }
-        public function update($empresa)
+        public function update($id,$empresa)
         {
-            $id = $empresa['id'];
             $this->db->set($this->_setEmpresa($empresa))->where('idempresa', $id)->update('empresa');
             if ($this->db->affected_rows() === 1) {
                 return true;

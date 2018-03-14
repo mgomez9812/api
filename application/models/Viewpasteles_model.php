@@ -9,7 +9,7 @@
         public function get($id = null){
             if(!is_null($id)){
                 $query = $this->db->select('*')->from('pro_venta')->where('idpro_venta',$id)->get();
-                
+
                 if($query->num_rows()  === 1){
                     return $query->row_array();
                 }
@@ -32,9 +32,8 @@
             }
             return null;
         }
-        public function update($viewpasteles)
+        public function update($id, $viewpasteles)
         {
-            $id = $viewpasteles['id'];
             $this->db->set($this->_setViewpasteles($viewpastelescity))->where('idpro_venta', $id)->update('pro_venta');
             if ($this->db->affected_rows() === 1) {
                 return true;

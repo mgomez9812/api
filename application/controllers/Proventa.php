@@ -66,7 +66,7 @@
 		$data = $this->proventa_model->get($id);
 //si el return de la funcion es true se imprime el resultado
 			if($data){
-			header('Content-Type: application/json; charset=UTF-8');
+						header('Content-Type: application/json; charset=UTF-8');
             header('Access-Control-Allow-Origin: *');
             $this->response( array('proventa'=>$data), 200);
 			}
@@ -77,16 +77,16 @@
 
 	//funcion para insertar
 	public function index_post(){
-		if(!$this->post('data')){
-			header('Content-Type: application/json; charset=UTF-8');
+		if(!$this->post()){
+						header('Content-Type: application/json; charset=UTF-8');
             header('Access-Control-Allow-Origin: *');
 			$this->response(null, 400);
 		}
 
-		$id = $this->proventa_model->save('data');
+		$id = $this->proventa_model->save($this->post());
 
 		if(!is_null($id)){
-			$this->respose(array('proventa'=>$id),200);
+			$this->response(array('proventa'=>$id),200);
 		}
 		else{
 			$this->response(array('error'=>'no save'),400);
@@ -95,11 +95,11 @@
 
 	    //funcion para actualizar
     public function index_put($id){
-        if(!$this->post('data') || !$id){
+        if(!$this->put() || !$id){
             $this->response(null, 400);
         }
 
-        $update = $this->proventa_model->update($id, $this->post('data'));
+        $update = $this->proventa_model->update($id, $this->put());
 
         if(!is_null($update)){
             $this->response(array('proventa'=>'correct update'),200);

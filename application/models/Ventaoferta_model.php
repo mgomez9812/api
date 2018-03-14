@@ -36,17 +36,16 @@
 
         public function save($venta_oferta)
         {
-            $this->db->set($this->_setViewpasteles($venta_oferta))->insert('cliente');
+            $this->db->set($this->_setVenta($venta_oferta))->insert('pro_venta_a_pro_oferta');
             if ($this->db->affected_rows() === 1) {
                 return $this->db->insert_id();
             }
             return null;
         }
 
-        public function update($venta_oferta)
+        public function update($id, $venta_oferta)
         {
-            $id = $venta_oferta['id'];
-            $this->db->set($this->_setCliente($venta_oferta))->where('pro_venta_idpro_venta', $id)->update('pro_venta_a_pro_oferta');
+            $this->db->set($this->_setVenta($venta_oferta))->where('pro_venta_idpro_venta', $id)->update('pro_venta_a_pro_oferta');
             if ($this->db->affected_rows() === 1) {
                 return true;
             }
@@ -66,11 +65,11 @@
 *
 */
 
-        private function _setCliente($clientes)
+        private function _setVenta($clientes)
         {
             return array(
-                'pro_venta_idpro_venta' => $clientes['pro_ventaid'],
-                'oferta_idoferta' => $clientes['ofertaid'],
+	                'pro_venta_idpro_venta' => $clientes['pro_ventaid'],
+	                'oferta_idoferta' => $clientes['ofertaid'],
             );
         }
 

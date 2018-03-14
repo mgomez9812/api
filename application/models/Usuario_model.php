@@ -42,10 +42,9 @@
             }
             return null;
         }
-        public function update($usuario)
+        public function update($id, $usuario)
         {
-            $id = $usuario['id'];
-            $this->db->set($this->_setDetallespedido($usuario))->where('idusuario', $id)->update('usuario');
+            $this->db->set($this->_setUsuario($usuario))->where('idusuario', $id)->update('usuario');
             if ($this->db->affected_rows() === 1) {
                 return true;
             }
@@ -73,7 +72,7 @@
                 'direccion_user' => $usuario['direccion'],
                 'telefono_user' => $usuario['telefono'],
                 'nickname_user' => $usuario['nickname'],
-                'password_user' => $usuario['password'],
+                'pasword_user' => $usuario['password'],
                 'tipo_usuarioid' => $usuario['tipo'],
 
             );

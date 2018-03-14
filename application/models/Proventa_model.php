@@ -66,10 +66,11 @@
             }
             return null;
         }
-        public function update($pro_venta)
+
+
+        public function update($id, $pro_venta)
         {
-            $id = $pro_venta['id'];
-            $this->db->set($this->_setDetallespedido($precio_pro_venta))->where('idpro_venta', $id)->update('pro_venta');
+            $this->db->set($this->_setProventa($pro_venta))->where('idpro_venta', $id)->update('pro_venta');
             if ($this->db->affected_rows() === 1) {
                 return true;
             }
@@ -93,10 +94,9 @@
         {
             return array(
                 'nombre_pro_venta' => $venta['nombre'],
-                'precio_pro_venta' => $venta['nit_emp'],
-                'descripcion_pro_venta' => $venta['direccion'],
-                'decoracion_pastel' => $venta['ciudad'],
-                'oferta_id' => $venta['telefono'],
+                'precio_pro_venta' => $venta['precio'],
+                'descripcion_pro_venta' => $venta['descripcion'],
+                'decoracion_pastel' => $venta['decoracion'],
                 'categoria_id' => $venta['categoria'],
 								'ocacion_id' => $venta['idocacion'],
 

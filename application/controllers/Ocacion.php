@@ -64,13 +64,11 @@
 
 	//funcion para insertar
 	public function index_post(){
-
 		if(!$this->post()){
 			header('Content-Type: application/json; charset=UTF-8');
 			header('Access-Control-Allow-Origin: *');
 			$this->response(null, 400);
 		}
-		echo $this->post('data');
 		$id = $this->ocacion_model->save($this->post());
 
 		if(!is_null($id)){
@@ -83,11 +81,14 @@
 
 	    //funcion para actualizar
     public function index_put($id){
-        if(!$this->post('data') || !$id){
-            $this->response(null, 400);
+
+				if(!$this->put() || !$id){
+					header('Content-Type: application/json; charset=UTF-8');
+					header('Access-Control-Allow-Origin: *');
+					$this->response(null, 400);
         }
 
-        $update = $this->ocacion_model->update($id, $this->post('data'));
+        $update = $this->ocacion_model->update($id, $this->put());
 
         if(!is_null($update)){
             $this->response(array('ocacion'=>'correct update'),200);

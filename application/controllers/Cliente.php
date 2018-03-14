@@ -24,7 +24,7 @@
 			header('Content-Type: application/json; charset=UTF-8');
 			header('Access-Control-Allow-Origin: *');
 			if($seleccion == 0){
-				echo json_encoe($cliente, JSON_PRETTY_PRINT);
+				echo json_encode($cliente, JSON_PRETTY_PRINT);
 			}
 			else{
 				$this->response( array('categoria'=>$cliente), 200);
@@ -48,7 +48,7 @@
 				header('Content-Type: application/json; charset=UTF-8');
 	      header('Access-Control-Allow-Origin: *');
 				if ($seleccion == 0) {
-				echo json_enconde($cliente, JSON_PRETTY_PRINT);
+				echo json_encode($cliente, JSON_PRETTY_PRINT);
 				}
 				else{
 					$this->response( array('categoria'=>$cliente), 200);
@@ -65,9 +65,8 @@
 	public function index_post(){
 
 		if(!$this->post()){
-
 			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *');
+      header('Access-Control-Allow-Origin: *');
 			$this->response(null, 400);
 		}
 
@@ -83,17 +82,19 @@
 
 	    //funcion para actualizar
     public function index_put($id){
-        if(!$this->post('cliente') || !$id){
+        if(!$this->put() || !$id){
+					header('Content-Type: application/json; charset=UTF-8');
+		      header('Access-Control-Allow-Origin: *');
             $this->response(null, 400);
         }
 
-        $update = $this->cliente_model->update($id, $this->post('cliente'));
+        $update = $this->cliente_model->update($id, $this->put());
 
         if(!is_null($update)){
             $this->response(array('response'=>'correct update'));
         }
         else{
-            $this->response(array('error'=>'no save'), 400);
+            $this->response(array('error'=>'no save'), 404);
         }
     }
 

@@ -75,7 +75,7 @@
 		$id = $this->fotografia_model->save($this->post());
 
 		if(!is_null($id)){
-			$this->respose(array('fotografia'=>$id),200);
+			$this->response(array('fotografia'=>$id),200);
 		}
 		else{
 			$this->response(array('error'=>'no save'),400);
@@ -84,11 +84,11 @@
 
 	    //funcion para actualizar
     public function index_put($id){
-        if(!$this->post('data') || !$id){
+        if(!$this->put() || !$id){
             $this->response(null, 400);
         }
 
-        $update = $this->fotografia_model->update($id, $this->post('data'));
+        $update = $this->fotografia_model->update($id, $this->put());
 
         if(!is_null($update)){
             $this->response(array('fotografia'=>'correct update'),200);

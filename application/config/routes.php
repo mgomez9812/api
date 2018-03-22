@@ -200,6 +200,14 @@ $route['ventaoferta/(:num)/(:num)']['get'] = 'ventaoferta/find/$1/$2';
 $route['ventaoferta']['post'] = 'ventaoferta/index';
 $route['ventaoferta/(:num)']['put'] = 'ventaoferta/index/$1';
 $route['ventaoferta/(:num)']['delete'] = 'ventaoferta/index/$1';
+
+/*
+*rutas para login
+*/
+$route['login']['get'] = 'login/index';
+$route['login']['post'] = 'login/index';
+$route['logincliente']['get'] = 'logincliente/index';
+$route['logincliente']['post'] = 'logincliente/index';
 /*
 | -------------------------------------------------------------------------
 | Sample REST API Routes

@@ -67,14 +67,14 @@
         private function _setCliente($clientes)
         {
             return array(
-                'nombre_cli' => $clientes['nombre'],
-                'apellido_cli' => $clientes['apellido'],
-                'direccion_cli' => $clientes['direccion'],
-                'telefono_cli' => $clientes['telefono'],
-                'nickname_cli' => $clientes['nickname'],
+                'nombre_cli' => $clientes['nombre_cli'],
+                'apellido_cli' => $clientes['apellido_cli'],
+                'direccion_cli' => $clientes['direccion_cli'],
+                'telefono_cli' => $clientes['telefono_cli'],
+                'nickname_cli' => $clientes['nickname_cli'],
                 'password_cli' => $clientes['password'],
-                'correo_cli' => $clientes['correo'],
-                'nit_cli' => $clientes['nit'],
+                'correo_cli' => $clientes['correo_cli'],
+                'nit_cli' => $clientes['nit_cli'],
             );
         }
 

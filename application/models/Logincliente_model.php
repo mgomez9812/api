@@ -18,9 +18,9 @@
 		*/
  		public function Login_get($login){
             $query = $this->db->get_where('cliente', array('nickname_cli'=>$login['user'], 'password_cli'=>$login['password']));
-            if($query->num_rows()  === 1){
-                return true;
-            }
+						if($query->num_rows()  === 1){
+								return $query->row_array();
+						}
             return false;
         }
 /*

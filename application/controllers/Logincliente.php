@@ -27,7 +27,7 @@ class Logincliente extends REST_Controller{
 		$id = $this->logincliente_model->Login_get($this->post());
 
 		if($id == true){
-			$this->response(array('datos'=>true), 200);
+			$this->response(array('datos'=>$id), 200);
 		}
 		else{
 			$this->response(array('error'=>false),200);

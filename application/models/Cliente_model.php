@@ -34,6 +34,7 @@
             return false;
         }
 
+
         public function save($cliente)
         {
             $this->db->set($this->_setCliente($cliente))->insert('cliente');
@@ -41,6 +42,9 @@
                 return $this->db->insert_id();
             }
             return null;
+
+
+
         }
         public function update($id, $cliente)
         {

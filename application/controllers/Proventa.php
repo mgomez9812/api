@@ -131,7 +131,7 @@
     }
 
 		//obtener ofertas del producto
-		public function ofertas_get($id,$$seleccionar){
+		public function ofertas_get($id,$seleccionar){
 			//se llama al modelo categoria
 					$data = $this->proventa_model->ofertas();
 			//se valida si el resultado no es null de la respuesta

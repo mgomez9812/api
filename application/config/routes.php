@@ -151,7 +151,7 @@ $route['pedido/(:num)']['delete'] = 'pedido/index/$1';
 *rutas para productos venta
 *
 */
-$route['proventa/(:num)']['get'] = 'proventa/index/$1';
+$route['proventa/(:num)/(:num)']['get'] = 'proventa/index/$1/$2';
 $route['proventa/(:num)/(:num)']['get'] = 'proventa/find/$1/$2';
 $route['proventa']['post'] = 'proventa/index';
 $route['proventa/(:num)']['put'] = 'proventa/index/$1';

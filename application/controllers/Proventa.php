@@ -57,7 +57,7 @@
 	}
 
 //funcion para buscar por id en la tabla categoria
-	public function find_get($id){
+	public function find_get($id,$seleccionar){
 //se valida que el id no sea null
 		if(!$id){
 			$this->response(null, 400);
@@ -68,7 +68,12 @@
 			if($data){
 						header('Content-Type: application/json; charset=UTF-8');
             header('Access-Control-Allow-Origin: *');
-            $this->response( array('proventa'=>$data), 200);
+						if ($seleccionar == 0) {
+							echo json_encode($data, JSON_PRETTY_PRINT);
+						}
+						else{
+							$this->response( array('proventa'=>$data), 200);
+						}
 			}
 			else{
 				$this->response(null, 404);

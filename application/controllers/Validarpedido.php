@@ -10,6 +10,8 @@
 	{
 			function __construct()
 		{
+			header('Access-Control-Allow-Origin: *');
+			header('Access-Control-Allow-Methods: *');
 			parent::__construct();
 			$this->load->model('validarpedido_model');
 		}
@@ -107,6 +109,12 @@
             $this->response(array('error'=>'no save'), 400);
         }
     }
+
+		//para options
+		//dejadlo es para que funcione update and delete
+		public function index_options(){
+				echo 'options';
+		}
 	}
 
  ?>

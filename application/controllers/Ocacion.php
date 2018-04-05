@@ -118,8 +118,8 @@
         }
     }
 
-		//para borrar un pastel
-
+		//para options 
+		//dejadlo es para que funcione update and delete
 	  public function index_options(){
         echo 'options';
     }

@@ -11,6 +11,8 @@
 
 		function __construct()
 		{
+			header('Access-Control-Allow-Origin: *');
+			header('Access-Control-Allow-Methods: *');
 			parent::__construct();
 			$this->load->model('proventa_model');
 		}
@@ -148,6 +150,12 @@
 					else{
 						$this->response(null, 400);
 					}
+		}
+
+		//para options
+		//dejadlo es para que funcione update and delete
+		public function index_options(){
+				echo 'options';
 		}
 	}
  ?>

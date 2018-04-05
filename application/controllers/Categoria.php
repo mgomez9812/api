@@ -7,10 +7,11 @@ require_once APPPATH . '/libraries/REST_Controller.php';
 class Categoria extends REST_Controller{
 
 	public function __construct(){
-		parent::__construct();
-		$this->load->model('categoria_model'
 
-	);
+		header('Access-Control-Allow-Origin: *');
+		header('Access-Control-Allow-Methods: *');
+		parent::__construct();
+		$this->load->model('categoria_model');
 	}
 //optener todos los datos de la tabla Categoria
 	public function index_get($seleccion){
@@ -123,6 +124,12 @@ class Categoria extends REST_Controller{
 						else{
 							$this->response(null, 404);
 						}
+		}
+
+		//para options
+		//dejadlo es para que funcione update and delete
+		public function index_options(){
+				echo 'options';
 		}
 
 }

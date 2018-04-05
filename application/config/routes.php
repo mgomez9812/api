@@ -128,6 +128,8 @@ $route['ocacion/(:num)/(:num)']['get'] = 'ocacion/find/$1/$2';
 $route['ocacion']['post'] = 'ocacion/index';
 $route['ocacion/(:num)']['put'] = 'ocacion/index/$1';
 $route['ocacion/(:num)']['delete'] = 'ocacion/index/$1';
+$route['ocacion']['options'] = 'ocacion/index/';
+
 
 /*
 *oferta

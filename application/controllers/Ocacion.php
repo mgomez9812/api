@@ -10,8 +10,9 @@
 	{
 		function __construct()
 		{
+			header('Access-Control-Allow-Origin: *');
+			header('Access-Control-Allow-Methods: *');
 			parent::__construct();
-			$this->output->set_header('Access-Control-Allow-Origin: *');
 			$this->load->model('ocacion_model');
 		}
 
@@ -22,6 +23,7 @@
 //se valida si el resultado no es null de la respuesta
 		if(!is_null($data)){
 			header('Content-Type: application/json; charset=UTF-8');
+
 			header('Access-Control-Allow-Origin: *');
 
 			if($seleccion == 0){
@@ -87,13 +89,15 @@
 					header('Access-Control-Allow-Origin: *');
 					$this->response(null, 400);
         }
-
         $update = $this->ocacion_model->update($id, $this->put());
 
         if(!is_null($update)){
+
             $this->response(array('ocacion'=>'correct update'),200);
         }
         else{
+					header('Content-Type: application/json; charset=UTF-8');
+					header('Access-Control-Allow-Origin: *');
             $this->response(array('error'=>'no save'), 400);
         }
     }
@@ -114,6 +118,11 @@
         }
     }
 
+		//para borrar un pastel
+
+	  public function index_options(){
+        echo 'options';
+    }
 	}
 
 ?>

@@ -13,7 +13,7 @@
 		}
 
 		/*
-		*funcion para seleccionar los datos de la tabla Clientes
+		*funcion para seleccionar los datos de la tabla proventa
 		*
 		*/
  		public function get($id = null){
@@ -85,6 +85,22 @@
             return null;
         }
 
+
+/*
+*funcion para seleccionar nombres
+*/
+public function pro_nombre($id = null){
+				if(!is_null($id)){
+							$query = $this->db->query("SELECT * FROM pro_venta WHERE pro_venta.nombre_pro_Venta LIKE '%$id%'");;
+
+							if($query->num_rows() > 0){
+									return $query->result_array();
+							}
+						return false;
+				}
+
+				return false;
+		}
 /*
 *se crea el array para contener toda la informacion la cual sera insertada en la tabla empresa
 *
@@ -102,6 +118,7 @@
 
             );
         }
+
 
 
 

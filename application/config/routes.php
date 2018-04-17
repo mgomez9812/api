@@ -155,16 +155,20 @@ $route['pedido']['options'] = 'pedido/index/';
 *
 */
 $route['proventa/(:num)/(:num)']['get'] = 'proventa/index/$1/$2';
-$route['proventa/(:num)/(:num)']['get'] = 'proventa/find/$1/$2';
+//$route['proventa/(:num)/(:num)']['get'] = 'proventa/find/$1/$2';
 $route['proventa']['post'] = 'proventa/index';
 $route['proventa/(:num)']['put'] = 'proventa/index/$1';
 $route['proventa/(:num)']['delete'] = 'proventa/index/$1';
+$route['proventa/(:any)/(:num)']['get'] = 'proventa/find/$1/$2';
 $route['proventa']['options'] = 'proventa/index/';
-
 //Ofertas del producto
 $route['proventa/ofertas/(:num)']['get'] = 'proventa/ofertas/$1';
 //  ruta de imagenes de productos
 $route['proventa/imagen/(:num)']['get'] ='proventa/imagen/$1';
+
+$route['proventaget/(:num)']['get'] ='proventaget/index/$1';
+
+
 
 
 $route['inner']['get'] = 'inner/index';

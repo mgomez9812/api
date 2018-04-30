@@ -7,6 +7,8 @@ require_once APPPATH . '/libraries/REST_Controller.php';
 class Login extends REST_Controller{
 
 	public function __construct(){
+		header('Access-Control-Allow-Origin: *');
+		header('Access-Control-Allow-Methods: *');
 		parent::__construct();
 		$this->load->model('login_model');
 	}
@@ -19,8 +21,6 @@ class Login extends REST_Controller{
 	//funcion para insertar
 	public function index_post(){
 		if(!$this->post()){
-						header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *');
 						$this->response(null, 400);
 		}
 

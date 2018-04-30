@@ -67,8 +67,6 @@ $route['categoria']['post'] = 'categoria/index';
 $route['categoria/(:num)']['put'] = 'categoria/index/$1';
 $route['categoria/(:num)']['delete']='categoria/index/$1';
 $route['categoria']['options'] = 'categoria/index/';
-//ruta de productos por categoria
-$route['categoria/proventas/(:num)/(:num)']['get']='categoria/proventas/$1/$2';
 
 /*
 rutas para los clientes
@@ -161,12 +159,7 @@ $route['proventa/(:num)']['put'] = 'proventa/index/$1';
 $route['proventa/(:num)']['delete'] = 'proventa/index/$1';
 $route['proventa/(:any)/(:num)']['get'] = 'proventa/find/$1/$2';
 $route['proventa']['options'] = 'proventa/index/';
-//Ofertas del producto
-$route['proventa/ofertas/(:num)']['get'] = 'proventa/ofertas/$1';
-//  ruta de imagenes de productos
-$route['proventa/imagen/(:num)']['get'] ='proventa/imagen/$1';
 
-$route['proventaget/(:num)']['get'] ='proventaget/index/$1';
 
 
 
@@ -219,6 +212,34 @@ $route['login']['get'] = 'login/index';
 $route['login']['post'] = 'login/index';
 $route['logincliente']['get'] = 'logincliente/index';
 $route['logincliente']['post'] = 'logincliente/index';
+
+/*
+*validar usuario si existe
+*/
+$route['validarusuario']['post'] = 'validarusuario/index';
+
+/*
+*verificar si existe el correo para enviar recuperacion
+*/
+$route['verificarcorreo']['post'] = 'verificarcorreo/index';
+
+
+
+/*
+*rutas compuetas para llamar a varias tablas al mismo tiempo
+*/
+//para seleccionar ofertas de un determinado producto
+//
+$route['proventa/ofertas/(:num)']['get'] = 'proventa/ofertas/$1';
+
+//rutas para seleccionar las imgs de un producto
+//
+$route['proventa/imagen/(:num)']['get'] ='proventa/imagen/$1';
+
+$route['proventaget/(:num)']['get'] ='proventaget/index/$1';
+
+//ruta de productos por categoria
+$route['categoria/proventas/(:num)/(:num)']['get']='categoria/proventas/$1/$2';
 
 /*
 | -------------------------------------------------------------------------

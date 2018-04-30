@@ -73,6 +73,7 @@
                 'telefono_user' => $usuario['telefono'],
                 'nickname_user' => $usuario['nickname'],
                 'pasword_user' => $usuario['password'],
+								'usr_correo' => $usuario['correo'],
                 'tipo_usuarioid' => $usuario['tipo'],
 
             );

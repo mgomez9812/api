@@ -65,6 +65,9 @@
 			);
 	}
 
+/*
+*para seleccionar el producto por medio de categoria 
+*/
 	public function getProVentas($id = null){
 
 		if(!is_null($id)){

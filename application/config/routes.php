@@ -238,9 +238,11 @@ $route['proventa/imagen/(:num)']['get'] ='proventa/imagen/$1';
 
 $route['proventaget/(:num)']['get'] ='proventaget/index/$1';
 
-//ruta de productos por categoria
+//ruta de productos por categoria primer numero es el id para la busqueda el segundo es para ver la respuesta
 $route['categoria/proventas/(:num)/(:num)']['get']='categoria/proventas/$1/$2';
 
+//ruta para listar productos por ocacion
+$route['ocacion/proventas/(:num)/(:num)']['get']='ocacion/proventas/$1/$2';
 /*
 | -------------------------------------------------------------------------
 | Sample REST API Routes

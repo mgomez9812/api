@@ -8,6 +8,8 @@
  class Validarusuario extends REST_Controller{
 
  	public function __construct(){
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: *');
  		parent::__construct();
  		$this->load->model('validarusuario_model');
  	}

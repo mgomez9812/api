@@ -91,7 +91,7 @@
 */
 public function pro_nombre($id = null){
 				if(!is_null($id)){
-							$query = $this->db->query("SELECT * FROM pro_venta WHERE pro_venta.nombre_pro_Venta LIKE '%$id%'");;
+							$query = $this->db->query("SELECT * FROM pro_venta WHERE pro_venta.nombre_pro_Venta LIKE '%$id%'");
 
 							if($query->num_rows() > 0){
 									return $query->result_array();

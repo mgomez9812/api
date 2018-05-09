@@ -43,8 +43,8 @@
       $config = array(
        'protocol' => 'smtp',
        'smtp_host' => 'smtp.googlemail.com',
-       'smtp_user' => 'correo@gmail.com', //Su Correo de Gmail Aqui
-       'smtp_pass' => 'pass', // Su Password de Gmail aqui
+       'smtp_user' => 'chatos842@gmail.com', //Su Correo de Gmail Aqui
+       'smtp_pass' => 'herramientas', // Su Password de Gmail aqui
        'smtp_port' => '587',
        'smtp_crypto' => 'tls',
        'mailtype' => 'html',

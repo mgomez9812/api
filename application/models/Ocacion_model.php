@@ -64,6 +64,24 @@
         }
 
 /*
+*funcion get para la busqueda por medio de ocacion
+*/
+				public function getProventas($id = null){
+
+							if(!is_null($id)){
+								$query = $this->db->select('*')->from('pro_venta')->where('ocacion_id',$id)->get();
+								if($query->num_rows() > 0){
+									return $query->result_array();
+								}
+								return false;
+							}
+							return false;
+				}
+
+
+
+
+/*
 *se crea el array para contener toda la informacion la cual sera insertada en la tabla ocacion
 *
 */

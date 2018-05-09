@@ -101,6 +101,9 @@ class Categoria extends REST_Controller{
         }
     }
 
+/*
+*funcion que se utiliza para visualizar los productos por categoria
+*/
 		//obtener sus productos
 		public function proventas_get($id, $solicitante){
 			//se valida que el id no sea null
@@ -117,7 +120,7 @@ class Categoria extends REST_Controller{
 										echo json_encode($proventas,JSON_PRETTY_PRINT);
 									}
 			           	else{
-										 $this->response( array('proventas'=>$proventas), 200);
+										 $this->response( array('proventa'=>$proventas), 200);
 									}
 
 						}

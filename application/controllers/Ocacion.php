@@ -118,7 +118,41 @@
         }
     }
 
-		//para options 
+/*
+*funcion para seleccionar pasteles por medio de la ocacion
+*/
+
+public function proventas_get($id, $seleccion){
+
+		//se valida que el id no sea nulo
+		if(!$id){
+			$this->response(null, 404);
+		}
+
+	//llamamos a la funcion get
+	$proventas = $this->ocacion_model->getProventas($id);
+
+	//si el return de la funcion es true se imprime el resultado
+				if($proventas){
+							header('Content-Type: application/json; charset=UTF-8');
+							header('Access-Control-Allow-Origin: *');
+
+							if($seleccion == 0){
+								echo json_encode($proventas,JSON_PRETTY_PRINT);
+							}
+							else{
+								 $this->response( array('proventa'=>$proventas), 200);
+							}
+
+				}
+				else{
+					$this->response(null, 404);
+				}
+}
+
+
+
+		//para options
 		//dejadlo es para que funcione update and delete
 	  public function index_options(){
         echo 'options';

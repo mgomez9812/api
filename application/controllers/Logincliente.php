@@ -7,14 +7,13 @@ require_once APPPATH . '/libraries/REST_Controller.php';
 class Logincliente extends REST_Controller{
 
 	public function __construct(){
+
+		header('Access-Control-Allow-Origin: *');
+		header('Access-Control-Allow-Methods: *');
 		parent::__construct();
 		$this->load->model('logincliente_model');
 	}
 
-//funcion para ver si se realiza de manera correcta la ruta login
-  public function index_get(){
-			$this->response(array('datos'=>'data cliente'), 200);
-  }
 
 	//funcion para insertar
 	public function index_post(){
@@ -24,14 +23,36 @@ class Logincliente extends REST_Controller{
 						$this->response(null, 400);
 		}
 
-		$id = $this->logincliente_model->Login_get($this->post());
+		$consulta = $this->post('tipo_consulta');
 
-		if($id == true){
-				echo json_encode($id, JSON_PRETTY_PRINT);
+		if($consulta == '1'){
+
+			$id = $this->logincliente_model->Login_get($this->post());
+
+			if($id>0){
+					echo json_encode($id, JSON_PRETTY_PRINT );
+			}
+			else{
+				$this->response(array('error'=>false),400);
+			}
+
+
 		}
-		else{
-			$this->response(array('error'=>false),200);
+		else if($consulta == '2') {
+			$id = $this->logincliente_model->Login_get($this->post());
+
+			if($id > 0){
+				echo $id;
+//				$this->response(array('id'=>$id),200);
+			}
+			else{
+				
+				$this->response(array('error'=>false),400);
+			}
 		}
+/*		
+
+		*/
 	}
 
 

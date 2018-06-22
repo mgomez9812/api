@@ -16,19 +16,25 @@
 		}
 
 //optener todos los datos de la tabla Categoria
+//llamar a la funcion get  para validar pedido 
 	public function index_get(){
-//se llama al modelo categoria
-		$data = $this->inner_model->get();
-//se valida si el resultado no es null de la respuesta
+		$data = $this->inner_model->validar_pedido();
+	
+		
 		if(!is_null($data)){
-			header('Content-Type: application/json; charset=UTF-8');
-            header('Access-Control-Allow-Origin: *');
-            $this->response( array('inner'=>$data), 200);
+			header('Content-type: application/json: charset=UTF-8');
+			header('Access-Control-Allow-Origin: *');
+			$this->response(array('pedidos' => $data), 200);
 		}
 		else{
 			$this->response(null, 400);
 		}
+		
 	}
+	
+
 
 	}
+
+
  ?>

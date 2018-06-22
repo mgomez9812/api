@@ -163,8 +163,6 @@ $route['proventa']['options'] = 'proventa/index/';
 
 
 
-
-$route['inner']['get'] = 'inner/index';
 /*
 *Rutas para tipo Usuario
 *
@@ -210,7 +208,6 @@ $route['ventaoferta']['options'] = 'ventaoferta/index/';
 */
 $route['login']['get'] = 'login/index';
 $route['login']['post'] = 'login/index';
-$route['logincliente']['get'] = 'logincliente/index';
 $route['logincliente']['post'] = 'logincliente/index';
 
 /*
@@ -243,6 +240,17 @@ $route['categoria/proventas/(:num)/(:num)']['get']='categoria/proventas/$1/$2';
 
 //ruta para listar productos por ocacion
 $route['ocacion/proventas/(:num)/(:num)']['get']='ocacion/proventas/$1/$2';
+
+//$route['login']['get'] = 'login/index';
+//rutas para validar ver y validar pedido 
+$route['validar_pedido_get']['get'] = 'inner/index' ;
+
+//ruta para mostrar pedidos para la venta 
+$route['prod_to_venta']['get'] = 'prod_to_venta/index';
+
+//rutas para mostar los pedidos que estan en listas 
+$route['pedidos']['get'] = 'pedidos/index';
+
 /*
 | -------------------------------------------------------------------------
 | Sample REST API Routes

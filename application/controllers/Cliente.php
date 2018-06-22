@@ -29,7 +29,7 @@
 				echo json_encode($cliente, JSON_PRETTY_PRINT);
 			}
 			else{
-				$this->response( array('categoria'=>$cliente), 200);
+				$this->response( array('cliente'=>$cliente), 200);
 			}
 		}
 		else{
